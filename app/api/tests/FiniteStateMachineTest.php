@@ -22,7 +22,7 @@ final class FiniteStateMachineTest extends TestCase
      */
     public function testGetStateZero()
     {
-        $this->state_machine = new FiniteStateMachine();
+        $this->state_machine = new FiniteStateMachine('BPI TestCase App');
   
         $this->state_machine->setState(0);
 
@@ -37,7 +37,7 @@ final class FiniteStateMachineTest extends TestCase
      */
     public function testGetStateOne()
     {
-        $this->state_machine = new FiniteStateMachine();
+        $this->state_machine = new FiniteStateMachine('BPI TestCase App');
   
         $this->state_machine->setState(1);
 
@@ -52,7 +52,7 @@ final class FiniteStateMachineTest extends TestCase
      */
     public function testPrepareInputSpaces()
     {
-        $this->state_machine = new FiniteStateMachine();
+        $this->state_machine = new FiniteStateMachine('BPI TestCase App');
   
         $this->state_machine->binary_input = "1 0 1";
 
@@ -67,7 +67,7 @@ final class FiniteStateMachineTest extends TestCase
      */
     public function testPrepareInputWithNoZeroOne()
     {
-        $this->state_machine = new FiniteStateMachine();
+        $this->state_machine = new FiniteStateMachine('BPI TestCase App');
 
         $this->state_machine->binary_input = "12021";
 
@@ -82,7 +82,7 @@ final class FiniteStateMachineTest extends TestCase
      */
     public function testPrepareInputWithNonNumber()
     {
-        $this->state_machine = new FiniteStateMachine();
+        $this->state_machine = new FiniteStateMachine('BPI TestCase App');
 
         $this->state_machine->binary_input = "12A02B1@Q";
 
@@ -116,7 +116,7 @@ final class FiniteStateMachineTest extends TestCase
      */
     public function testProcessFinalStateCase1()
     {
-        $this->state_machine = new FiniteStateMachine();
+        $this->state_machine = new FiniteStateMachine('BPI TestCase App');
 
         $this->state_machine->binary_input = "110";
 
@@ -131,7 +131,7 @@ final class FiniteStateMachineTest extends TestCase
      */
     public function testProcessFinalStateCase2()
     {
-        $this->state_machine = new FiniteStateMachine();
+        $this->state_machine = new FiniteStateMachine('BPI TestCase App');
 
         $this->state_machine->binary_input = "1010";
 
@@ -146,7 +146,7 @@ final class FiniteStateMachineTest extends TestCase
      */
     public function testProcessFinalStateCase3()
     {
-        $this->state_machine = new FiniteStateMachine();
+        $this->state_machine = new FiniteStateMachine('BPI TestCase App');
 
         $this->state_machine->binary_input = "1011";
 
