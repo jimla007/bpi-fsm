@@ -1,0 +1,21 @@
+<div id="container">
+    <div class="col-lg-12 col-md-12">
+        <h1>BPI 
+            <small>Finite State Automata App</small>
+        </h1>
+    </div>
+    <div class="col-lg-4 col-md-4">
+        <div class="form-group">
+            <label>User Input (ie 1010 or 110)</label>
+            <input type="text" ng-pattern="/^[0-1]*$/" class="form-control" size="40" ng-model="input" placeholder="Please enter your input string">
+            <button class="btn btn-success" ng-click="getFsmApi()"><span class="glyphicon glyphicon-flash" aria-hidden="true"></span> Process</button>
+            <button class="btn btn-default" ng-click="clear()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Clear</button>
+        </div>                
+
+    </div>         
+    <div class="col-lg-12 col-md-12">
+        <div ng-if="answer" class="alert alert-success" role="alert"><pre>
+            <span ng-repeat="item in answer track by $index">{{item}}</span>
+        </pre></div>
+    </div>
+</div>
