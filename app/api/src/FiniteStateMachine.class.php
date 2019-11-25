@@ -37,19 +37,19 @@ class FiniteStateMachine
 	 * Gets the current state
 	 **/
 		
-    public function getState()
-    {
-        return $this->current_state;
-    }
+	public function getState()
+	{
+		return $this->current_state;
+	}
 	
 	/**
 	 * Sets the current state
 	 **/
 	 
 	public function setState($state)
-    {
-        $this->current_state = $state;
-    }
+	{
+		$this->current_state = $state;
+	}
 	
 	/**
 	 * Transition
@@ -59,15 +59,15 @@ class FiniteStateMachine
 	 **/
 	 	
 	private function transition($input)
-    {
+	{
 		$state_num = $this->current_state;
 		// If input = 0
-		if($input == 0) {	
+		if ($input == 0) {	
 			$this->setState( $this::TRANSITIONS[$state_num][0][0] );
 		} else {
 			$this->setState( $this::TRANSITIONS[$state_num][1][0] );
 		}
-    }
+	}
 	
 	/**
 	 * Prepare Binary String
@@ -80,17 +80,18 @@ class FiniteStateMachine
 	public function prepareInput() {
 		//Treat and prepare the string so its a binary 1 or 0 input only
 		$this->binary_input = str_replace(" ", "", $this->binary_input); // remove spaces;
-        
-        $this->binary_input = preg_replace("/[^0-1]/", "", $this->binary_input);
-				
+			
+		$this->binary_input = preg_replace("/[^0-1]/", "", $this->binary_input);
+					
 		return $this->binary_input;
-    }	
+	}	
 	/**
 	 * Create the array path/data so we can determine the final state
 	 * 
 	 **/
 	 
-	private function createPathArray() {
+	private function createPathArray() 
+	{
 		/**
 		 * Break the entire string into an array
 		 * so we can iterate through it
@@ -99,41 +100,44 @@ class FiniteStateMachine
 		foreach($inputs as $input) {
 			// Transition and add to the state_path
 			$this->transition($input);	
-            
+				
 			//Add this to state path array so we can use this later in final answer
 			array_push($this->state_path, "S{$this->current_state} = {$this->current_state}");
 			// Stop if the flag is set
-			if($this->stop_flag) {
-				if($this::STATES[$this->current_state] == 1) {
+			if ($this->stop_flag) {
+				if ($this::STATES[$this->current_state] == 1) {
 					break;
 				}
 			}
-		
-        }
-        return $this->state_path;
+
+		}
+		return $this->state_path;
 	}
 	/**
 	 * Prepare the the final answer
 	 * 
 	 * This method will put together the logic to find the final state/result
 	 **/
-	public function processFinalState() {
-        $this->setState(0);
-        
-        $this->prepareInput();
-        
-        $this->createPathArray();
+	public function processFinalState() 
+	{
+		$this->setState(0);
+				
+		$this->prepareInput();
+				
+		$this->createPathArray();
 		//In BPI's machine all states are final, as noted in questiom
 		$this->final_state = $this->state_path[max(array_keys($this->state_path))];
+
 		return $this->final_state;
-    }
+	}
 	/**
 	 * Prepare the output display
 	 * 
 	 * Outputs a sample display/view to BPI of the final state and the transitions tables.
 	 * This will returned back to angular client to be displayed
 	 **/
-	public function createOutput() {
+	public function createOutput() 
+	{
 		$output = "\n";
 		$output .= "DETAILS for {$this->name}\n";
 		$output .= "--------------------------\n";
@@ -148,13 +152,12 @@ class FiniteStateMachine
 			$output .= "S{$state_num} | 1 | S{$next_state[1]}\n";
 		}
 		$output .= "\n";
-		if($this->final_state){ 
-			//echo  "\n\n";
+		if ($this->final_state){ 
 			$output .= "3.) Solution => Output for state {$this->final_state}";
 		} else {
 			$output .= "Error/Invalid";
 		}
-		
+			
 		return $output;
 	}
 }
