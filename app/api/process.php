@@ -18,7 +18,6 @@
 
     $state_machine->processFinalState();
     
-    
     /**
      * Get the final answer and transitions table response to be displayed in angular client
      **/
