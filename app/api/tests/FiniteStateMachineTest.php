@@ -23,6 +23,8 @@ final class FiniteStateMachineTest extends TestCase
     public function setUp()
     {
         $this->state_machine = new FiniteStateMachine('BPI TestCase App');
+        
+        $this->assertEquals("0", $this->state_machine->binary_input);
     }
 
     /**
@@ -146,14 +148,14 @@ final class FiniteStateMachineTest extends TestCase
         $this->assertEquals("S2 = 2", $this->state_machine->processFinalState());
     }
 
-    //If we need to Test private/protected methods
-    public function invokeMethod(&$object, $methodName, array $parameters = array())
+    //Maybe need later, if we need to Test private/protected methods
+    /*public function invokeMethod(&$object, $methodName, array $parameters = array())
     {
         $reflection = new \ReflectionClass(get_class($object));
         $method = $reflection->getMethod($methodName);
         $method->setAccessible(true);
     
         return $method->invokeArgs($object, $parameters);
-    }
+    }*/
 
 }
