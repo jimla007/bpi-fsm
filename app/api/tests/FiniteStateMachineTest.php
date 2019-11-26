@@ -23,8 +23,14 @@ final class FiniteStateMachineTest extends TestCase
     public function setUp()
     {
         $this->state_machine = new FiniteStateMachine('BPI TestCase App');
-        
+
+        $this->assertIsArray($this->state_machine::STATES);
+
+        $this->assertIsArray($this->state_machine::TRANSITIONS);
+
         $this->assertEquals("0", $this->state_machine->binary_input);
+
+        $this->assertNull($this->state_machine->final_state);
     }
 
     /**
