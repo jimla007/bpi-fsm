@@ -15,6 +15,17 @@ final class FiniteStateMachineTest extends TestCase
      */
 
     /**
+     *  setUp
+     *
+     * @test
+     * @return void
+     */
+    public function setUp()
+    {
+        $this->state_machine = new FiniteStateMachine('BPI TestCase App');
+    }
+
+    /**
      *  testGetStateZero
      *
      * @test
@@ -22,8 +33,6 @@ final class FiniteStateMachineTest extends TestCase
      */
     public function testGetStateZero()
     {
-        $this->state_machine = new FiniteStateMachine('BPI TestCase App');
-  
         $this->state_machine->setState(0);
 
         $this->assertEquals("0", $this->state_machine->getState());
@@ -37,8 +46,6 @@ final class FiniteStateMachineTest extends TestCase
      */
     public function testGetStateOne()
     {
-        $this->state_machine = new FiniteStateMachine('BPI TestCase App');
-  
         $this->state_machine->setState(1);
 
         $this->assertEquals("1", $this->state_machine->getState());
@@ -52,8 +59,6 @@ final class FiniteStateMachineTest extends TestCase
      */
     public function testPrepareInputSpaces()
     {
-        $this->state_machine = new FiniteStateMachine('BPI TestCase App');
-  
         $this->state_machine->binary_input = "1 0 1";
 
         $this->assertEquals("101", $this->state_machine->prepareInput());
@@ -67,8 +72,6 @@ final class FiniteStateMachineTest extends TestCase
      */
     public function testPrepareInputWithNoZeroOne()
     {
-        $this->state_machine = new FiniteStateMachine('BPI TestCase App');
-
         $this->state_machine->binary_input = "12021";
 
         $this->assertEquals("101", $this->state_machine->prepareInput());
@@ -82,8 +85,6 @@ final class FiniteStateMachineTest extends TestCase
      */
     public function testPrepareInputWithNonNumber()
     {
-        $this->state_machine = new FiniteStateMachine('BPI TestCase App');
-
         $this->state_machine->binary_input = "12A02B1@Q";
 
         $this->assertEquals("101", $this->state_machine->prepareInput());
@@ -97,8 +98,6 @@ final class FiniteStateMachineTest extends TestCase
      */
     /*public function testCreatePathArray()
     {
-        $this->state_machine = new FiniteStateMachine();
-
         $this->state_machine->binary_input = "110";
 
         $this->state_machine->setState(0);
@@ -116,8 +115,6 @@ final class FiniteStateMachineTest extends TestCase
      */
     public function testProcessFinalStateCase1()
     {
-        $this->state_machine = new FiniteStateMachine('BPI TestCase App');
-
         $this->state_machine->binary_input = "110";
 
         $this->assertEquals("S0 = 0", $this->state_machine->processFinalState());
@@ -131,8 +128,6 @@ final class FiniteStateMachineTest extends TestCase
      */
     public function testProcessFinalStateCase2()
     {
-        $this->state_machine = new FiniteStateMachine('BPI TestCase App');
-
         $this->state_machine->binary_input = "1010";
 
         $this->assertEquals("S1 = 1", $this->state_machine->processFinalState());
@@ -146,8 +141,6 @@ final class FiniteStateMachineTest extends TestCase
      */
     public function testProcessFinalStateCase3()
     {
-        $this->state_machine = new FiniteStateMachine('BPI TestCase App');
-
         $this->state_machine->binary_input = "1011";
 
         $this->assertEquals("S2 = 2", $this->state_machine->processFinalState());
